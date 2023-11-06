@@ -6,16 +6,12 @@
   $password = "prasad"; 
   $databasename = "test"; 
   
-  // CREATE CONNECTION 
+  // creating connection
   $conn = new mysqli($servername, 
     $username, $password, $databasename); 
   
-  // GET CONNECTION ERRORS 
-  if ($conn->connect_error) { 
-      die("Connection failed: " . $conn->connect_error); 
-  } 
   
-  // SQL QUERY 
+  // SQL  
   $query = "SELECT * FROM `user`;"; 
 $firstName="";
 $lastName="";
@@ -23,7 +19,7 @@ $lastName="";
  $email="";
  $password="";
   $number="";
-  // FETCHING DATA FROM DATABASE 
+  // FETCHING DATA 
   $result = $conn->query($query); 
   
     if ($result->num_rows > 0)  
@@ -31,17 +27,17 @@ $lastName="";
         // OUTPUT DATA OF EACH ROW 
         while($row = $result->fetch_assoc()) 
         { 
-            echo "Roll No: " . 
-                $row["firstname"]. " - Name: " . 
-                $row["lastname"]. " - lastName: " .              
-                $row["email"]. " - mail: " . 
-                $row["number"]. " number: " . 
+            echo "Roll No :- " . 
+                $row["firstname"]. " - Name:- " . 
+                $row["lastname"]. " - LastName:- " .              
+                $row["email"]. " - EmailId:- : " . 
+                $row["number"]. " PhoneNo.:- " . 
                 $row["password"]. " | City: " ;
                 
         } 
     }  
     else { 
-        echo "0 results"; 
+        echo "No Record Found "; 
     } 
   
    $conn->close(); 
